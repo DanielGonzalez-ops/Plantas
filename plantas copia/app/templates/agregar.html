@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block contenido %}
+<div class="container-fluid col-md-6 offset-md-3" style="background-color:rgba(255, 255, 255, 0.477);">
+    <div class="row mb-5">
+        <div class="text-center">
+            
+            <h3>Agregar producto</h3>
+        </div>        
+    </div>
+    
+<form method="POST" action="/agregar/" enctype="multipart/form-data">
+    {% csrf_token %} 
+    
+             {{form}}
+            <button type="submit"  name="Guardar" class="btn tipo1 flagf float-end button">Aceptar</button>               
+            <a href="/Articulosadmin/"  class="btn tipo1 flagf float-end button">Cancelar</a>                  
+</form>
+</div>
+{{mensaje}}
+{% endblock %}

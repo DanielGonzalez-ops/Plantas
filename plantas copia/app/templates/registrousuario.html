@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block contenido %}
+
+    <script src="{% static 'js/Restriccion.js'%}"></script>
+    
+  <script type="text/javascript">
+    function Usuario(e) {
+    var key = window.Event ? e.which : e.keyCode
+    return (key >= 65 && key <= 90) || (key >= 97 && (key <= 122)) || (key ==8) || (key == 43) || (key == 45) || (key == 46) || (key == 95) || (key >= 48 && key <= 57) || (key == 8)} 
+    function Nombre(e) {
+    var key = window.Event ? e.which : e.keyCode
+    return (key >= 65 && key <= 90) || (key >= 97 && (key <= 122)) || (key ==8) || (key == 32) || (key == 45) || (key >= 160 && key <= 163) }
+    function Apellido(e) {
+    var key = window.Event ? e.which : e.keyCode
+    return (key >= 65 && key <= 90) || (key >= 97 && (key <= 122)) || (key ==8) || (key == 32) || (key == 45) || (key >= 160 && key <= 163) }
+    function Telefono(e){
+    var key = window.Event ? e.which : e.keyCode
+    return (key >= 48 && key <= 57) || (key == 8) }
+    function Rut(e){
+    var key = window.Event ? e.which : e.keyCode
+    return (key >= 48 && key <= 57) || (key==8)}
+    function Verificador(e){
+    var key = window.Event ? e.which : e.keyCode
+    return (key >= 48 && key <= 57) || (key == 8) || (key == 75) || (key == 107)}
+
+     </script>
+
+
+    <div class="container-fluid col-md-6 offset-md-3" style="background-color:rgba(255, 255, 255, 0.477);">
+        <div class="row mb-5">
+            <div class="text-center">
+                <h3>Registrarse</h3>
+            </div>        
+        </div>
+        <form method="POST" action="/registrousuario/" enctype="multipart/form-data">
+            {% csrf_token %} 
+            
+                     {{form}}
+        <div class="col-md-6 mb-3">
+            <button type="submit" id="btnGuardar" name="btnGuardar" class="btn tipo1 flagf float-end btnGuardar"
+              style="border-color: rgba(48, 83, 8, 0.821);" value="Guardar">Aceptar</button>
+        </div>
+    </form>
+ </div>
+{{mensaje}}
+{% endblock %}

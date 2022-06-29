@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{# comentario si es requerido #}
+{% load static %}
+
+{# definir contenidos de los bloques declarados en la plantilla base #}
+
+{% block tituloPestana %}
+    Articulos
+{% endblock %}
+{% block titulo %} 
+    <h1 class="text-center mt-5"></h1>
+{% endblock %}
+
+{% block contenido %}
+{# #} 
+    <form method="POST" action="/gestion/">
+        {% csrf_token %} 
+  <div class="container">
+  <div class="col-md- 8 g-9" >
+  <div class="box">
+  <div class="row mt-8">
+
+
+<div class="row justify-content-center">
+    <table class="table">
+        <tr>
+            <th>CodBarra</th>
+            <th>Nombre</th>
+            <th>Precio Costo</th>
+            <th>Precio Venta</th>
+            <th>Marca</th>
+            <th>Categoria</th>
+            <th>Descripcion</th>
+            <th>Imagen</th>
+        </tr>
+    {% for p in productos %}
+        <tr>
+            <td>{{ p.codBarra }}</td>
+            <td>{{ p.nombre }}</td>
+            <td>{{ p.precioCosto }}</td>
+            <td>{{ p.precioVenta }}</td>
+            <td>{{ p.marca }}</td>
+            <td>{{ p.categoria }}</td>
+            <td>{{ p.descripcion}}</td>
+            <td>{{ p.imagen}}</td>
+
+            <td><a href="{% url 'modificar' p.id %}" class="btn btn-secondary">Modificar</a></td>
+            <td><a href="{% url 'eliminar' p.id %}" class="btn btn-warning">Eliminar</a></td>
+
+        </tr>
+      </form>
+    </div> 
+  </div>
+  </div>
+    {% endfor %}
+        </table>
+</div>
+{% endblock %}
